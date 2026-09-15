@@ -1,1 +1,177 @@
-ini adalah file pribadi
+<<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Mawan</title>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: white;
+            font-family: "Times New Roman", serif;
+        }
+
+        .container {
+            width: 800px;
+            margin: 30px auto;
+            border: 1px solid #aaa;
+        }
+
+        /* HEADER */
+        .header {
+            height: 225px;
+            background-color: #77d5fb;
+            text-align: center;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+
+        .header h1 {
+            margin-top: 60px;
+            font-size: 30px;
+        }
+
+        .header p {
+            font-style: italic;
+        }
+
+        /* MENU */
+        .menu {
+            background-color: #ddd;
+            border-top: 1px solid #aaa;
+            border-bottom: 1px solid #aaa;
+            padding: 3px;
+        }
+
+        .menu a {
+            color: blue;
+            text-decoration: underline;
+            margin-right: 5px;
+        }
+
+        /* CONTENT */
+        .main {
+            display: flex;
+        }
+
+        .content {
+            width: 75%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .sidebar {
+            width: 25%;
+            background-color: #eee;
+            border-left: 1px solid #aaa;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            font-weight: normal;
+        }
+
+        .sidebar a {
+            color: blue;
+        }
+
+        .artikel {
+            border-bottom: 1px solid #aaa;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .artikel h2 {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .tanggal {
+            font-style: italic;
+        }
+
+        .selanjutnya {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: right;
+            background-color: #eee;
+            border-top: 1px solid #aaa;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Website Anya</h1>
+        <p>This is my own website</p>
+    </div>
+
+    <!-- MENU -->
+    <div class="menu">
+        <a href="#">Beranda</a>
+        <a href="#">Tentang Saya</a>
+        <a href="#">Sekolahku</a>
+        <a href="#">Syair Lagu</a>
+    </div>
+
+    <!-- ISI WEBSITE -->
+    <div class="main">
+
+        <div class="content">
+
+            <!-- ARTIKEL 1 -->
+            <div class="artikel">
+                <h2>Pembelajaran Jarak Jauh</h2>
+
+                <p class="tanggal">
+                    Senin, 7 September 2026
+                </p>
+
+                <p>
+                    Karena adanya abu erupsi anak gunung Krakatau,
+                    maka selama 3 hari ke depan, pembelajaran dilakukan
+                    secara jarak jauh. Pembelajaran dapat memakai zoom,
+                    LMS, WhatsApp, Telegram, atau media lain yang
+                    ditentukan oleh guru.
+                </p>
+
+                <a href="#" class="selanjutnya">
+                    Selanjutnya
+                </a>
+            </div>
+
+            <!-- ARTIKEL 2 -->
+            <div class="artikel">
+                <h2>Lomba Pembuatan Video</h2>
+
+                <p class="tanggal">
+                    Jumat, 4 September 2026
+                </p>
+
+                <p>
+                    Telah dibuka pendaftaran lomba pembuatan video pendek
+                    tentang pariwisata di Tangerang. Lomba ini bekerja sama
+                    dengan MGMP DKV Kota Tangerang, yang bertujuan untuk
+                    memperkenalkan pariwisata yang ada di kota Tangerang.
+                </p>
+
+                <a href="#" class="selanjutnya">
+                    Selanjutnya
+                </a>
+            </div>
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h3>Tautan external</h3>
