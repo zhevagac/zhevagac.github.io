@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Website Anyac</title>
+    <title>ANYA — Ocean Music</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -17,38 +16,25 @@
 
         body {
             min-height: 100vh;
-
             background:
                 radial-gradient(circle at 20% 20%, #258edb 0%, transparent 30%),
                 radial-gradient(circle at 80% 80%, #1261ad 0%, transparent 35%),
                 linear-gradient(135deg, #03152f, #07589b, #159bd3);
-
             color: white;
-
             overflow-x: hidden;
         }
 
-
-        /* =========================
-           OCEAN DECORATIONS
-        ========================= */
-
         .bubble {
             position: fixed;
-
             border-radius: 50%;
-
             border: 2px solid rgba(255,255,255,0.25);
-
             animation: float 6s infinite ease-in-out;
-
             pointer-events: none;
         }
 
         .bubble.one {
             width: 25px;
             height: 25px;
-
             left: 10%;
             bottom: 15%;
         }
@@ -56,25 +42,20 @@
         .bubble.two {
             width: 12px;
             height: 12px;
-
             right: 15%;
             bottom: 30%;
-
             animation-delay: 2s;
         }
 
         .bubble.three {
             width: 40px;
             height: 40px;
-
             right: 8%;
             top: 15%;
-
             animation-delay: 1s;
         }
 
         @keyframes float {
-
             0%, 100% {
                 transform: translateY(0);
             }
@@ -84,232 +65,122 @@
             }
         }
 
-
-        /* =========================
-           MAIN CONTAINER
-        ========================= */
-
         .container {
-
             width: min(900px, 90%);
-
             margin: auto;
-
             padding: 60px 0;
         }
 
-
-        /* =========================
-           HEADER
-        ========================= */
-
         header {
             text-align: center;
-
             margin-bottom: 45px;
         }
 
         .logo {
-
             font-size: 55px;
-
             font-weight: 900;
-
             letter-spacing: 14px;
-
-            text-shadow:
-                0 5px 20px rgba(0,0,0,0.3);
         }
 
         .subtitle {
-
             margin-top: 10px;
-
             color: #c9f1ff;
-
             font-size: 14px;
-
             letter-spacing: 2px;
         }
 
-
-        /* =========================
-           OCEAN QUOTE
-        ========================= */
-
         .quote {
-
             text-align: center;
-
             margin: 30px auto 45px;
-
             max-width: 650px;
-
             font-family: Georgia, serif;
-
             font-size: 21px;
-
             font-style: italic;
-
             line-height: 1.6;
-
             color: #e5f8ff;
         }
 
         .quote span {
-
             display: block;
-
             margin-top: 8px;
-
             font-family: Arial, sans-serif;
-
             font-size: 11px;
-
             font-style: normal;
-
             letter-spacing: 2px;
-
             color: #9edcff;
         }
 
-
-        /* =========================
-           MUSIC CARD
-        ========================= */
+        .music-card,
+        .comments-card {
+            padding: 35px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        }
 
         .music-card {
-
-            padding: 35px;
-
-            border-radius: 30px;
-
-            background: rgba(255,255,255,0.12);
-
-            border: 1px solid rgba(255,255,255,0.25);
-
-            backdrop-filter: blur(20px);
-
-            box-shadow:
-                0 25px 60px rgba(0,0,0,0.3);
-
             text-align: center;
         }
 
-
-        /* =========================
-           ALBUM
-        ========================= */
-
         .album {
-
             width: 190px;
             height: 190px;
-
             margin: auto;
-
             border-radius: 25px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #8ee4ff,
-                    #0963aa
-                );
-
+            background: linear-gradient(145deg, #8ee4ff, #0963aa);
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
-            box-shadow:
-                0 15px 35px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         .music-note {
-
             font-size: 75px;
-
-            text-shadow:
-                0 5px 15px rgba(0,0,0,0.2);
         }
 
-
-        /* =========================
-           SONG
-        ========================= */
-
         .song {
-
             margin-top: 25px;
         }
 
         .song h2 {
-
             font-size: 25px;
-
             margin-bottom: 8px;
         }
 
         .song p {
-
             color: #bceaff;
-
             font-size: 15px;
         }
 
-
-        /* =========================
-           BUTTON
-        ========================= */
-
-        .play-button {
-
+        .play-button,
+        .comment-button {
             margin-top: 25px;
-
             padding: 14px 32px;
-
             border: none;
-
             border-radius: 30px;
-
             background: white;
-
             color: #07549a;
-
             font-size: 15px;
-
             font-weight: bold;
-
             cursor: pointer;
-
             transition: 0.3s;
         }
 
-        .play-button:hover {
-
-            transform: scale(1.07);
-
+        .play-button:hover,
+        .comment-button:hover {
+            transform: scale(1.05);
             background: #ddf6ff;
         }
 
-
-        /* =========================
-           VIDEO SECTION
-        ========================= */
-
         #video-section {
-
             display: none;
-
             margin-top: 35px;
-
             animation: appear 0.5s ease;
         }
 
         @keyframes appear {
-
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -322,155 +193,165 @@
         }
 
         .video-container {
-
             position: relative;
-
             width: 100%;
-
             padding-bottom: 56.25%;
-
             height: 0;
-
             overflow: hidden;
-
             border-radius: 20px;
-
-            box-shadow:
-                0 20px 50px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         }
 
         .video-container iframe {
-
             position: absolute;
-
             top: 0;
             left: 0;
-
             width: 100%;
             height: 100%;
-
             border: none;
         }
 
-
-        /* =========================
-           SECOND QUOTE
-        ========================= */
-
         .ocean-quote {
-
             margin-top: 35px;
-
             text-align: center;
-
             font-family: Georgia, serif;
-
             font-style: italic;
-
             font-size: 18px;
-
             color: #d8f5ff;
-
             line-height: 1.6;
         }
 
-
         /* =========================
-           FOOTER
+           COMMENTS
         ========================= */
 
-        footer {
-
-            text-align: center;
-
-            margin-top: 50px;
-
-            font-size: 11px;
-
-            color: #9bdcff;
-
-            letter-spacing: 1px;
+        .comments-card {
+            margin-top: 35px;
         }
 
+        .comments-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .comments-subtitle {
+            text-align: center;
+            color: #bceaff;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        .input {
+            width: 100%;
+            border: none;
+            outline: none;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 12px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .input::placeholder {
+            color: #c4e9fa;
+        }
+
+        textarea.input {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .comment-button {
+            margin-top: 5px;
+        }
+
+        #comments-list {
+            margin-top: 35px;
+        }
+
+        .comment {
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        .comment-name {
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .comment-text {
+            color: #d8f4ff;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .empty {
+            text-align: center;
+            color: #bceaff;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 11px;
+            color: #9bdcff;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 
-
 <body>
-
-    <!-- BUBBLES -->
 
     <div class="bubble one"></div>
     <div class="bubble two"></div>
     <div class="bubble three"></div>
 
-
     <div class="container">
 
-
-        <!-- HEADER -->
-
         <header>
-
-            <div class="logo">
-                ANYA
-            </div>
+            <div class="logo">ANYA</div>
 
             <div class="subtitle">
                 A LITTLE CORNER OF MUSIC & OCEAN
             </div>
-
         </header>
 
 
-        <!-- OCEAN QUOTE -->
-
         <div class="quote">
-
             “The sea, once it casts its spell,
             holds one in its net of wonder forever.”
 
             <span>— Jacques Yves Cousteau</span>
-
         </div>
 
 
-        <!-- MUSIC CARD -->
+        <!-- MUSIC -->
 
         <div class="music-card">
 
-
             <div class="album">
-
-                <div class="music-note">
-                    ♪
-                </div>
-
+                <div class="music-note">♪</div>
             </div>
-
 
             <div class="song">
-
-                <h2>
-                    Choose The Latter
-                </h2>
-
-                <p>
-                    Finn Wolfhard
-                </p>
-
+                <h2>Choose The Latter</h2>
+                <p>Finn Wolfhard</p>
             </div>
-
 
             <button
                 class="play-button"
-                onclick="showVideo()"
-            >
+                onclick="showVideo()">
                 ▶ Play Song
             </button>
 
-
-            <!-- VIDEO -->
 
             <div id="video-section">
 
@@ -485,12 +366,9 @@
 
                 </div>
 
-
                 <div class="ocean-quote">
-
                     “The ocean is a poem without words,
                     written in waves.”
-
                 </div>
 
             </div>
@@ -498,15 +376,238 @@
         </div>
 
 
+        <!-- COMMENTS -->
+
+        <div class="comments-card">
+
+            <h2 class="comments-title">
+                🌊 ANYA'S GUESTBOOK
+            </h2>
+
+            <p class="comments-subtitle">
+                Leave a little message in the ocean.
+            </p>
+
+
+            <input
+                id="name"
+                class="input"
+                type="text"
+                maxlength="30"
+                placeholder="Your name..."
+            >
+
+
+            <textarea
+                id="message"
+                class="input"
+                maxlength="500"
+                placeholder="Write something about this website..."
+            ></textarea>
+
+
+            <button
+                class="comment-button"
+                onclick="addComment()">
+                🌊 Send Comment
+            </button>
+
+
+            <div id="comments-list">
+                <p class="empty">
+                    Loading messages from the sea...
+                </p>
+            </div>
+
+        </div>
+
+
         <footer>
-
             🌊 made with music, memories & a little bit of ocean
-
         </footer>
-
 
     </div>
 
+
+    <!-- FIREBASE -->
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+        import {
+            getFirestore,
+            collection,
+            addDoc,
+            query,
+            orderBy,
+            onSnapshot,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+        /* =================================
+           PASTE YOUR FIREBASE CONFIG HERE
+        ================================= */
+
+        const firebaseConfig = {
+
+            apiKey: "PASTE_YOUR_API_KEY",
+
+            authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
+
+            projectId: "PASTE_YOUR_PROJECT_ID",
+
+            storageBucket: "PASTE_YOUR_PROJECT.firebasestorage.app",
+
+            messagingSenderId: "PASTE_YOUR_SENDER_ID",
+
+            appId: "PASTE_YOUR_APP_ID"
+
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+
+        const db = getFirestore(app);
+
+
+        /* =================================
+           SHOW COMMENTS
+        ================================= */
+
+        const commentsQuery = query(
+            collection(db, "comments"),
+            orderBy("createdAt", "desc")
+        );
+
+
+        onSnapshot(commentsQuery, (snapshot) => {
+
+            const list =
+                document.getElementById("comments-list");
+
+            list.innerHTML = "";
+
+
+            if (snapshot.empty) {
+
+                list.innerHTML = `
+                    <p class="empty">
+                        No messages yet.
+                        Be the first to leave one! 🌊
+                    </p>
+                `;
+
+                return;
+            }
+
+
+            snapshot.forEach((doc) => {
+
+                const data = doc.data();
+
+
+                const comment =
+                    document.createElement("div");
+
+                comment.className = "comment";
+
+
+                const name =
+                    document.createElement("div");
+
+                name.className = "comment-name";
+
+                name.textContent =
+                    "💙 " + data.name;
+
+
+                const message =
+                    document.createElement("div");
+
+                message.className = "comment-text";
+
+                message.textContent =
+                    data.message;
+
+
+                comment.appendChild(name);
+
+                comment.appendChild(message);
+
+                list.appendChild(comment);
+
+            });
+
+        });
+
+
+        /* =================================
+           ADD COMMENT
+        ================================= */
+
+        window.addComment = async function() {
+
+            const nameInput =
+                document.getElementById("name");
+
+            const messageInput =
+                document.getElementById("message");
+
+
+            const name =
+                nameInput.value.trim();
+
+            const message =
+                messageInput.value.trim();
+
+
+            if (!name || !message) {
+
+                alert(
+                    "Please enter your name and message first 🌊"
+                );
+
+                return;
+            }
+
+
+            try {
+
+                await addDoc(
+                    collection(db, "comments"),
+                    {
+                        name: name,
+                        message: message,
+                        createdAt: serverTimestamp()
+                    }
+                );
+
+
+                nameInput.value = "";
+
+                messageInput.value = "";
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Something went wrong. Please try again."
+                );
+
+            }
+
+        };
+
+    </script>
+
+
+    <!-- YOUTUBE -->
 
     <script>
 
@@ -523,7 +624,8 @@
                 "https://www.youtube.com/embed/2aQPVevcqHc?autoplay=1";
 
 
-            videoSection.style.display = "block";
+            videoSection.style.display =
+                "block";
 
 
             videoSection.scrollIntoView({
