@@ -374,12 +374,7 @@ footer {
 
     nav {
         overflow-x: auto;
-        .gambar-berita {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-}
+        }
 
 }
+    }
