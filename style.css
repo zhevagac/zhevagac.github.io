@@ -1,0 +1,379 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        #252928;
+
+    background-size: 115px 115px;
+
+    font-family: "Times New Roman", serif;
+    color: #111;
+}
+
+
+a {
+    color: #075b54;
+}
+
+a:hover {
+    color: #0b9187;
+}
+
+
+/* WEBSITE */
+
+.website {
+    width: 585px;
+    margin: 40px auto;
+
+    background: white;
+
+    border: 2px solid #b8d9d5;
+
+    box-shadow: 0 0 0 1px #555;
+}
+
+
+/* HEADER */
+
+header {
+    height: 155px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    color: white;
+
+    background: #087f78;
+
+    padding-top: 43px;
+}
+
+
+header h1 {
+    margin: 0 0 10px;
+
+    font-size: 27px;
+}
+
+
+header p {
+    margin: 0;
+
+    font-size: 14px;
+}
+
+
+/* UBUR-UBUR */
+
+.jelly {
+    position: absolute;
+
+    width: 105px;
+    height: 70px;
+
+    opacity: 0.4;
+}
+
+
+.jelly1 {
+    left: -5px;
+    top: 15px;
+
+    transform: rotate(-8deg);
+}
+
+
+.jelly2 {
+    right: -5px;
+    top: 20px;
+
+    transform: rotate(10deg);
+}
+
+
+.bell {
+    position: absolute;
+
+    left: 15px;
+    top: 0;
+
+    width: 75px;
+    height: 42px;
+
+    border: 2px solid white;
+
+    border-bottom: 0;
+
+    border-radius:
+        70px 70px 18px 18px;
+}
+
+
+.bell::after {
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+    right: 10px;
+
+    bottom: -2px;
+
+    height: 8px;
+
+    border-bottom: 2px solid white;
+
+    border-radius: 50%;
+}
+
+
+.tentacle {
+    position: absolute;
+
+    top: 39px;
+
+    width: 18px;
+    height: 28px;
+
+    border-left: 2px solid white;
+
+    border-radius: 50%;
+}
+
+
+.t1 {
+    left: 22px;
+    transform: rotate(8deg);
+}
+
+
+.t2 {
+    left: 42px;
+
+    height: 36px;
+
+    transform: rotate(-5deg);
+}
+
+
+.t3 {
+    left: 62px;
+
+    transform: rotate(7deg);
+}
+
+
+.t4 {
+    left: 78px;
+
+    height: 23px;
+
+    transform: rotate(-8deg);
+}
+
+
+/* GELEMBUNG */
+
+.bubbles {
+    position: absolute;
+
+    left: 95px;
+    top: 15px;
+
+    color: rgba(255,255,255,0.45);
+
+    font-size: 20px;
+}
+
+
+/* NAVIGASI */
+
+nav {
+    height: 35px;
+
+    padding: 9px 10px;
+
+    background: #ccefe9;
+
+    border-bottom: 1px solid #999;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+}
+
+
+nav a {
+    margin-right: 3px;
+}
+
+
+/* CONTENT */
+
+.layout {
+    display: grid;
+
+    grid-template-columns:
+        1fr 146px;
+
+    min-height: 347px;
+}
+
+
+main {
+    padding: 12px 10px 18px;
+
+    border-right: 1px solid #777;
+
+    font-size: 14px;
+}
+
+
+main h3 {
+    margin: 8px 0 13px;
+
+    font-size: 17px;
+}
+
+
+main p {
+    margin: 0 0 13px;
+}
+
+
+.tanggal {
+    text-align: right;
+}
+
+
+hr {
+    border: 0;
+
+    border-top: 1px solid #bbb;
+
+    margin: 14px 0;
+}
+
+
+/* SIDEBAR */
+
+aside {
+    background: #d8dddc;
+
+    padding: 13px 10px;
+
+    font-size: 14px;
+}
+
+
+aside p {
+    margin: 0 0 10px;
+}
+
+
+aside ol {
+    margin-top: 0;
+
+    padding-left: 28px;
+}
+
+
+aside a {
+    word-break: break-word;
+}
+
+
+/* FOOTER */
+
+footer {
+    height: 35px;
+
+    padding: 9px 8px;
+
+    background: #050505;
+
+    color: white;
+
+    text-align: right;
+
+    font-size: 11px;
+}
+
+
+/* LOGO SEKOLAH */
+
+.school-logo {
+    display: block;
+
+    width: 120px;
+    height: 120px;
+
+    object-fit: contain;
+
+    margin: 5px auto 15px;
+}
+
+
+/* VIDEO */
+
+.video {
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    border: 0;
+
+    display: block;
+}
+
+
+.song-box {
+    background: #eef9f7;
+
+    border: 1px solid #a8d5cf;
+
+    padding: 10px;
+
+    margin-bottom: 15px;
+}
+
+
+/* HP */
+
+@media (max-width: 650px) {
+
+    .website {
+        width: calc(100% - 18px);
+
+        margin: 10px auto;
+    }
+
+
+    .layout {
+        grid-template-columns:
+            1fr 130px;
+    }
+
+
+    nav {
+        overflow-x: auto;
+    }
+
+}
