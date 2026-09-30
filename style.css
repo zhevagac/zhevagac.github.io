@@ -25,11 +25,11 @@ body {
 
 
 a {
-    color: #075b54;
+    color: #075b8a;
 }
 
 a:hover {
-    color: #0b9187;
+    color: #087fbd;
 }
 
 
@@ -41,7 +41,7 @@ a:hover {
 
     background: white;
 
-    border: 2px solid #b8d9d5;
+    border: 2px solid #b8d5e8;
 
     box-shadow: 0 0 0 1px #555;
 }
@@ -60,7 +60,7 @@ header {
 
     color: white;
 
-    background: #087f78;
+    background: #087fbd;
 
     padding-top: 43px;
 }
@@ -210,7 +210,7 @@ nav {
 
     padding: 9px 10px;
 
-    background: #ccefe9;
+    background: #d9efff;
 
     border-bottom: 1px solid #999;
 
@@ -272,10 +272,25 @@ hr {
 }
 
 
+/* GAMBAR BERITA */
+
+.gambar-berita {
+    display: block;
+
+    width: 100%;
+
+    max-width: 600px;
+
+    height: auto;
+
+    margin: 20px auto;
+}
+
+
 /* SIDEBAR */
 
 aside {
-    background: #d8dddc;
+    background: #dce9f0;
 
     padding: 13px 10px;
 
@@ -345,9 +360,9 @@ footer {
 
 
 .song-box {
-    background: #eef9f7;
+    background: #edf8ff;
 
-    border: 1px solid #a8d5cf;
+    border: 1px solid #a8cfe5;
 
     padding: 10px;
 
@@ -374,7 +389,6 @@ footer {
 
     nav {
         overflow-x: auto;
-        }
+    }
 
 }
-    }
