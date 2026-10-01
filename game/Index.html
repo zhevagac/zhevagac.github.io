@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Creature Clinic</title>
+
+<style>
+
+/* =====================================================
+   BASIC
+===================================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Trebuchet MS", Arial, sans-serif;
+    min-height:100vh;
+    background:#f4eadf;
+    color:#49382d;
+    overflow-x:hidden;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(48,36,29,.82);
+    backdrop-filter:blur(8px);
+
+    transition:opacity 1s ease, visibility 1s ease;
+}
+
+#intro.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.intro-content{
+    width:min(90%,500px);
+    text-align:center;
+
+    animation:introIn .8s ease;
+}
+
+@keyframes introIn{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.85);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+
+/* =====================================================
+   INTRO CHARACTERS
+===================================================== */
+
+.intro-character{
+    width:250px;
+    height:250px;
+
+    object-fit:contain;
+
+    filter:drop-shadow(0 12px 10px rgba(0,0,0,.25));
+
+    transition:
+        width 1.2s ease,
+        height 1.2s ease,
+        transform 1.2s ease;
+}
+
+
+/* =====================================================
+   DIALOGUE
+===================================================== */
+
+.dialogue{
+    margin-top:15px;
+
+    background:#fffaf3;
+
+    border:3px solid #49382d;
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:6px 7px 0 #49382d;
+}
+
+.dialogue p{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+    min-height:28px;
+}
+
+.dialogue button{
+    border:0;
+
+    background:#49382d;
+    color:white;
+
+    padding:10px 22px;
+
+    border-radius:999px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.dialogue button:hover{
+    transform:scale(1.08);
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+#main{
+    opacity:0;
+    transition:opacity 1s ease;
+
+    padding-bottom:100px;
+}
+
+#main.show{
+    opacity:1;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    text-align:center;
+    padding:80px 20px 40px;
+}
+
+header .tiny{
+    font-size:12px;
+    letter-spacing:4px;
+    opacity:.6;
+    margin-bottom:10px;
+}
+
+header h1{
+    font-size:clamp(40px,8vw,75px);
+    letter-spacing:5px;
+}
+
+header p{
+    margin-top:10px;
+    opacity:.7;
+}
+
+
+/* =====================================================
+   PATIENT SECTION
+===================================================== */
+
+.patients{
+    width:min(1100px,90%);
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:32px;
+}
+
+.section-title p{
+    opacity:.65;
+    margin-top:5px;
+}
+
+
+/* =====================================================
+   PATIENT GRID
+===================================================== */
+
+.patient-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:22px;
+}
+
+
+/* =====================================================
+   PATIENT CARD
+===================================================== */
+
+.patient-card{
+    border:3px solid #49382d;
+
+    background:#fffaf3;
+
+    border-radius:25px;
+
+    padding:20px;
+
+    cursor:pointer;
+
+    color:#49382d;
+
+    box-shadow:5px 6px 0 #49382d;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.patient-card:hover{
+    transform:translateY(-8px) rotate(-1deg);
+
+    box-shadow:
+        8px 12px 0 #49382d;
+}
+
+.patient-card h3{
+    font-size:28px;
+    margin-top:10px;
+}
+
+.patient-card p{
+    font-size:13px;
+    opacity:.65;
+    margin:5px 0 12px;
+}
+
+.status{
+    display:inline-block;
+
+    font-size:11px;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    background:#ead9c5;
+}
+
+
+/* =====================================================
+   CREATURE AREA
+===================================================== */
+
+.creature{
+    height:220px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
+
+/* =====================================================
+   CREATURE BODY
+===================================================== */
+
+.body{
+    width:95px;
+    height:125px;
+
+    border-radius:48% 48% 45% 45%;
+
+    position:relative;
+
+    box-shadow:
+        inset -8px -8px 0 rgba(0,0,0,.08);
+}
+
+
+/* head */
+
+.body::before{
+    content:"";
+
+    position:absolute;
+
+    width:115px;
+    height:100px;
+
+    left:-10px;
+    top:-55px;
+
+    border-radius:50%;
+
+    background:inherit;
+}
+
+
+/* eyes */
+
+.body::after{
+    content:"•   •";
+
+    position:absolute;
+
+    left:27px;
+    top:-27px;
+
+    font-size:25px;
+
+    letter-spacing:12px;
+}
+
+
+/* =====================================================
+   A — JELLYFISH
+===================================================== */
+
+.a .body{
+    background:#d9b6e8;
+
+    border-radius:
+        50% 50% 35% 35%;
+}
+
+.a .body:before{
+    background:#d9b6e8;
+
+    border-radius:
+        55% 55% 35% 35%;
+}
+
+.a .tentacles{
+    position:absolute;
+
+    bottom:20px;
+
+    width:110px;
+    height:60px;
+}
+
+.a .tentacles::before{
+    content:"〰 〰 〰";
+
+    position:absolute;
+
+    font-size:40px;
+
+    color:#9d72b8;
+
+    letter-spacing:-5px;
+}
+
+
+/* =====================================================
+   N — WOLF
+===================================================== */
+
+.n .body{
+    background:#aaa5a0;
+
+    border-radius:45%;
+}
+
+.n .ears{
+    position:absolute;
+
+    top:42px;
+
+    width:0;
+    height:0;
+
+    border-left:25px solid transparent;
+    border-right:25px solid transparent;
+    border-bottom:45px solid #aaa5a0;
+}
+
+.n .ear-left{
+    left:35%;
+    transform:rotate(-25deg);
+}
+
+.n .ear-right{
+    right:35%;
+    transform:rotate(25deg);
+}
+
+
+/* =====================================================
+   O — GOAT
+===================================================== */
+
+.o .body{
+    background:#dfc7a8;
+}
+
+.o .horn{
+    position:absolute;
+
+    width:25px;
+    height:40px;
+
+    border:8px solid #9a7655;
+
+    border-bottom:0;
+
+    border-radius:50% 50% 0 0;
+
+    top:38px;
+}
+
+.o .horn-left{
+    left:38%;
+    transform:rotate(-25deg);
+}
+
+.o .horn-right{
+    right:38%;
+    transform:rotate(25deg);
+}
+
+
+/* =====================================================
+   T — FOX
+===================================================== */
+
+.t .body{
+    background:#df875e;
+}
+
+.t .ears{
+    position:absolute;
+
+    top:35px;
+
+    width:0;
+    height:0;
+
+    border-left:27px solid transparent;
+    border-right:27px solid transparent;
+    border-bottom:50px solid #df875e;
+}
+
+.t .ear-left{
+    left:34%;
+    transform:rotate(-20deg);
+}
+
+.t .ear-right{
+    right:34%;
+    transform:rotate(20deg);
+}
+
+
+/* =====================================================
+   TAIL
+===================================================== */
+
+.tail{
+    position:absolute;
+
+    width:75px;
+    height:75px;
+
+    border-radius:50%;
+
+    right:12px;
+    bottom:35px;
+
+    z-index:-1;
+}
+
+.n .tail{
+    background:#aaa5a0;
+}
+
+.t .tail{
+    background:#df875e;
+}
+
+
+/* =====================================================
+   FACE DETAILS
+===================================================== */
+
+.face{
+    position:absolute;
+
+    z-index:5;
+
+    top:-25px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:80px;
+    height:60px;
+}
+
+.eye{
+    position:absolute;
+
+    width:9px;
+    height:12px;
+
+    background:#49382d;
+
+    border-radius:50%;
+
+    top:25px;
+}
+
+.eye.left{
+    left:15px;
+}
+
+.eye.right{
+    right:15px;
+}
+
+.mouth{
+    position:absolute;
+
+    width:18px;
+    height:10px;
+
+    border-bottom:
+        3px solid #49382d;
+
+    border-radius:50%;
+
+    left:31px;
+    top:42px;
+}
+
+
+/* =====================================================
+   PATIENT MODAL
+===================================================== */
+
+#modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:900;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(48,36,29,.7);
+
+    backdrop-filter:blur(7px);
+
+    padding:20px;
+}
+
+#modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:min(600px,100%);
+
+    background:#fffaf3;
+
+    border:
+        3px solid #49382d;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    position:relative;
+
+    box-shadow:
+        8px 10px 0 #49382d;
+
+    animation:modalIn .35s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.close{
+    position:absolute;
+
+    right:15px;
+    top:12px;
+
+    width:35px;
+    height:35px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#49382d;
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+}
+
+.modal-creature{
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:15px;
+}
+
+.modal-box h2{
+    text-align:center;
+
+    font-size:36px;
+}
+
+.modal-type{
+    text-align:center;
+
+    display:block;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    opacity:.5;
+
+    margin-bottom:5px;
+}
+
+.description{
+    text-align:center;
+
+    margin:10px auto 20px;
+
+    max-width:450px;
+
+    line-height:1.6;
+}
+
+.treatment{
+    background:#ead9c5;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-bottom:20px;
+}
+
+.treatment h3{
+    margin-bottom:7px;
+}
+
+.care-button{
+    display:block;
+
+    margin:auto;
+
+    border:0;
+
+    background:#49382d;
+
+    color:white;
+
+    padding:13px 22px;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+.care-button:hover{
+    transform:scale(1.05);
+}
+
+
+/* =====================================================
+   BOTTOM CIRO & CHEESE
+===================================================== */
+
+#littleDoctors{
+    position:fixed;
+
+    left:20px;
+    bottom:0;
+
+    z-index:500;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:5px;
+
+    pointer-events:none;
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+#littleDoctors.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+#littleDoctors img{
+    width:85px;
+    height:85px;
+
+    object-fit:contain;
+
+    filter:drop-shadow(
+        0 5px 4px rgba(0,0,0,.2)
+    );
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    text-align:center;
+
+    margin-top:80px;
+
+    opacity:.55;
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:800px){
+
+    .patient-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:500px){
+
+    .patient-grid{
+        grid-template-columns:1fr;
+    }
+
+    header h1{
+        font-size:40px;
+    }
+
+    .intro-character{
+        width:210px;
+        height:210px;
+    }
+
+    #littleDoctors img{
+        width:65px;
+        height:65px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     INTRO
+================================================== -->
+
+<div id="intro">
+
+    <div class="intro-content">
+
+        <img
+            id="introImage"
+            class="intro-character"
+            src="images/ciro.png"
+            alt="Ciro"
+        >
+
+        <div class="dialogue">
+
+            <p id="dialogueText">
+                Hi! Nama aku Ciro!
+            </p>
+
+            <button onclick="nextDialogue()">
+                lanjut →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     MAIN WEBSITE
+================================================== -->
+
+<div id="main">
+
+    <header>
+
+        <div class="tiny">
+            ✦ WELCOME TO ✦
+        </div>
+
+        <h1>
+            CREATURE CLINIC
+        </h1>
+
+        <p>
+            A tiny clinic for unusual little creatures.
+        </p>
+
+    </header>
+
+
+    <section class="patients">
+
+        <div class="section-title">
+
+            <h2>
+                Our Patients ♡
+            </h2>
+
+            <p>
+                Four creatures are waiting for their treatment...
+            </p>
+
+        </div>
+
+
+        <div class="patient-grid">
+
+
+            <!-- ================= A ================= -->
+
+            <button
+                class="patient-card"
+                onclick="openPatient('A')"
+            >
+
+                <div class="creature a">
+
+                    <div class="body">
+
+                        <div class="face">
+
+                            <span class="eye left"></span>
+                            <span class="eye right"></span>
+
+                            <span class="mouth"></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="tentacles"></div>
+
+                </div>
+
+                <h3>A</h3>
+
+                <p>
+                    Jellyfish Creature
+                </p>
+
+                <span class="status">
+                    needs care ♡
+                </span>
+
+            </button>
+
+
+            <!-- ================= N ================= -->
+
+            <button
+                class="patient-card"
+                onclick="openPatient('N')"
+            >
+
+                <div class="creature n">
+
+                    <div class="body">
+
+                        <div class="face">
+
+                            <span class="eye left"></span>
+                            <span class="eye right"></span>
+
+                            <span class="mouth"></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ears ear-left"></div>
+                    <div class="ears ear-right"></div>
+
+                    <div class="tail"></div>
+
+                </div>
+
+                <h3>N</h3>
+
+                <p>
+                    Wolf Creature
+                </p>
+
+                <span class="status">
+                    needs care ♡
+                </span>
+
+            </button>
+
+
+            <!-- ================= O ================= -->
+
+            <button
+                class="patient-card"
+                onclick="openPatient('O')"
+            >
+
+                <div class="creature o">
+
+                    <div class="body">
+
+                        <div class="face">
+
+                            <span class="eye left"></span>
+                            <span class="eye right"></span>
+
+                            <span class="mouth"></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="horn horn-left"></div>
+                    <div class="horn horn-right"></div>
+
+                </div>
+
+                <h3>O</h3>
+
+                <p>
+                    Goat Creature
+                </p>
+
+                <span class="status">
+                    needs care ♡
+                </span>
+
+            </button>
+
+
+            <!-- ================= T ================= -->
+
+            <button
+                class="patient-card"
+                onclick="openPatient('T')"
+            >
+
+                <div class="creature t">
+
+                    <div class="body">
+
+                        <div class="face">
+
+                            <span class="eye left"></span>
+                            <span class="eye right"></span>
+
+                            <span class="mouth"></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ears ear-left"></div>
+                    <div class="ears ear-right"></div>
+
+                    <div class="tail"></div>
+
+                </div>
+
+                <h3>T</h3>
+
+                <p>
+                    Fox Creature
+                </p>
+
+                <span class="status">
+                    needs care ♡
+                </span>
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        ✦ Creature Clinic ✦
+        <br>
+        <small>
+            Please take good care of them.
+        </small>
+
+    </footer>
+
+</div>
+
+
+<!-- ==================================================
+     SMALL CIRO & CHEESE
+================================================== -->
+
+<div id="littleDoctors">
+
+    <img
+        src="images/ciro.png"
+        alt="Ciro"
+    >
+
+    <img
+        src="images/cheese.png"
+        alt="Cheese"
+    >
+
+</div>
+
+
+<!-- ==================================================
+     PATIENT MODAL
+================================================== -->
+
+<div id="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="close"
+            onclick="closePatient()"
+        >
+            ×
+        </button>
+
+
+        <div
+            class="modal-creature"
+            id="modalCreature"
+        >
+        </div>
+
+
+        <span
+            class="modal-type"
+            id="modalType"
+        >
+            CREATURE
+        </span>
+
+
+        <h2 id="modalName">
+            Patient
+        </h2>
+
+
+        <p
+            class="description"
+            id="modalDescription"
+        >
+        </p>
+
+
+        <div class="treatment">
+
+            <h3>
+                ♡ Treatment
+            </h3>
+
+            <p id="modalTreatment">
+            </p>
+
+        </div>
+
+
+        <button
+            class="care-button"
+            onclick="carePatient()"
+        >
+            Take care of them ♡
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   INTRO DIALOGUE
+===================================================== */
+
+let dialogueStep = 0;
+
+const dialogueText =
+    document.getElementById("dialogueText");
+
+const introImage =
+    document.getElementById("introImage");
+
+const intro =
+    document.getElementById("intro");
+
+const main =
+    document.getElementById("main");
+
+const littleDoctors =
+    document.getElementById("littleDoctors");
+
+
+function nextDialogue(){
+
+    dialogueStep++;
+
+
+    if(dialogueStep === 1){
+
+        introImage.src =
+            "images/cheese.png";
+
+        dialogueText.textContent =
+            "Dan aku Cheese! ♡";
+
+    }
+
+
+    else if(dialogueStep === 2){
+
+        introImage.src =
+            "images/ciro.png";
+
+        dialogueText.textContent =
+            "Kami punya empat pasien yang membutuhkan perawatan...";
+
+    }
+
+
+    else if(dialogueStep === 3){
+
+        dialogueText.textContent =
+            "Mereka adalah A, N, O, dan T.";
+
+    }
+
+
+    else if(dialogueStep === 4){
+
+        dialogueText.textContent =
+            "Maukah kamu membantu kami merawat mereka?";
+
+    }
+
+
+    else{
+
+        intro.classList.add("hide");
+
+        main.classList.add("show");
+
+        littleDoctors.classList.add("show");
+
+    }
+
+}
+
+
+/* =====================================================
+   PATIENT DATA
+===================================================== */
+
+const patients = {
+
+    A:{
+        name:"A",
+        type:"JELLYFISH CREATURE",
+
+        description:
+            "A is a strange little creature with a soft jellyfish body. They are sensitive to sudden changes and need gentle care.",
+
+        treatment:
+            "Keep A somewhere calm and humid. Avoid bright lights and make sure they have enough water."
+    },
+
+
+    N:{
+        name:"N",
+        type:"WOLF CREATURE",
+
+        description:
+            "N is a quiet wolf-like creature. They tend to hide when they are nervous and need someone patient around them.",
+
+        treatment:
+            "Give N a comfortable place to rest and plenty of time to become comfortable with you."
+    },
+
+
+    O:{
+        name:"O",
+        type:"GOAT CREATURE",
+
+        description:
+            "O is a curious goat-like creature who loves exploring everything around them.",
+
+        treatment:
+            "Give O plenty of food, fresh water and a safe space where they can explore without getting hurt."
+    },
+
+
+    T:{
+        name:"T",
+        type:"FOX CREATURE",
+
+        description:
+            "T is a clever fox-like creature. They are energetic, curious and sometimes get themselves into trouble.",
+
+        treatment:
+            "Keep T entertained with little activities and make sure they have a warm and comfortable place to sleep."
+    }
+
+};
+
+
+/* =====================================================
+   OPEN PATIENT
+===================================================== */
+
+function openPatient(id){
+
+    const patient =
+        patients[id];
+
+    document.getElementById(
+        "modalType"
+    ).textContent =
+        patient.type;
+
+
+    document.getElementById(
+        "modalName"
+    ).textContent =
+        patient.name;
+
+
+    document.getElementById(
+        "modalDescription"
+    ).textContent =
+        patient.description;
+
+
+    document.getElementById(
+        "modalTreatment"
+    ).textContent =
+        patient.treatment;
+
+
+    /*
+       Membuat ulang creature
+       di dalam popup.
+    */
+
+    const creature =
+        document.createElement("div");
+
+    creature.className =
+        "creature " +
+        id.toLowerCase();
+
+    creature.innerHTML = `
+
+        <div class="body">
+
+            <div class="face">
+
+                <span class="eye left"></span>
+                <span class="eye right"></span>
+
+                <span class="mouth"></span>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    if(id === "A"){
+
+        creature.innerHTML +=
+            `<div class="tentacles"></div>`;
+
+    }
+
+
+    if(id === "N" || id === "T"){
+
+        creature.innerHTML +=
+            `
+            <div class="ears ear-left"></div>
+            <div class="ears ear-right"></div>
+            <div class="tail"></div>
+            `;
+
+    }
+
+
+    if(id === "O"){
+
+        creature.innerHTML +=
+            `
+            <div class="horn horn-left"></div>
+            <div class="horn horn-right"></div>
+            `;
+
+    }
+
+
+    const container =
+        document.getElementById(
+            "modalCreature"
+        );
+
+    container.innerHTML = "";
+
+    container.appendChild(creature);
+
+
+    document.getElementById(
+        "modal"
+    ).classList.add("active");
+
+}
+
+
+/* =====================================================
+   CLOSE PATIENT
+===================================================== */
+
+function closePatient(){
+
+    document.getElementById(
+        "modal"
+    ).classList.remove("active");
+
+}
+
+
+/* =====================================================
+   CARE BUTTON
+===================================================== */
+
+function carePatient(){
+
+    alert(
+        "♡ Treatment started! Thank you for taking care of them! ♡"
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+===================================================== */
+
+document
+    .getElementById("modal")
+    .addEventListener(
+        "click",
+        function(event){
+
+            if(event.target === this){
+
+                closePatient();
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closePatient();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
