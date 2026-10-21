@@ -802,6 +802,78 @@ a:focus-visible {
     <span class="footer-stars">✦ ───── ✶ ───── ✦</span>
   </footer>
   
+/* BACKGROUND COMIC ANIMATION */
+  <style>
+body {
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image: radial-gradient(
+        circle,
+        rgba(30, 40, 55, 0.16) 2px,
+        transparent 2.5px
+    );
+
+    background-size: 22px 22px;
+    animation: comicDrift 35s linear infinite;
+}
+
+@keyframes comicDrift {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(44px, 22px);
+    }
+}
+
+/* SELAMAT DATANG ANIMATION */
+header {
+    animation: welcomePop 0.8s ease-out both,
+               welcomeFloat 4s ease-in-out 0.8s infinite;
+    transform-origin: center;
+}
+
+@keyframes welcomePop {
+    0% {
+        opacity: 0;
+        transform: scale(0.75) rotate(-3deg);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.04) rotate(1deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes welcomeFloat {
+    0%, 100% {
+        translate: 0 0;
+    }
+    50% {
+        translate: 0 -5px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    body::before,
+    header {
+        animation: none;
+    }
+}
+</style>
 </body>
 </html>
 
