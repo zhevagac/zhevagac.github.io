@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Selamat Datang | Zhevanya Gladys Almalikha</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #243f66;
+  --navy-dark: #172b46;
+  --red: #9f2639;
+  --red-dark: #741a2b;
+  --cream: #f1e9d9;
+  --paper: #fff9eb;
+  --gray: #777573;
+  --ink: #252a32;
+  --line: #d1c5ae;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.7;
+  background-color: var(--gray);
+  background-image:
+    radial-gradient(#39393925 1px, transparent 1px),
+    radial-gradient(#ffffff22 1px, transparent 1px);
+  background-size: 12px 12px, 19px 19px;
+  overflow-x: hidden;
+}
+
+/* PAPER TEXTURE */
+
+.paper {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(#c7b99c40 .8px, transparent .8px);
+  background-size: 7px 7px;
+  border: 2px solid #e1d5bd;
+  box-shadow: 5px 6px 0 #172b4630;
+}
+
+/* MAIN WRAPPER */
+
+#pembungkus {
+  width: min(1180px, 94%);
+  margin: 35px auto;
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(240px, .9fr);
+  gap: 22px;
+}
+
+/* HEADER */
+
+#hero {
+  grid-column: 1 / -1;
+  min-height: 285px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+  background: var(--navy);
+  border: 3px solid var(--cream);
+  outline: 3px solid var(--navy-dark);
+  box-shadow: 8px 9px 0 #171c24;
+  isolation: isolate;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 2px dashed #f1e9d96b;
+  pointer-events: none;
+}
+
+#hero::after {
+  content: "✦";
+  position: absolute;
+  right: 7%;
+  top: 4%;
+  color: var(--cream);
+  font-size: 100px;
+  opacity: .22;
+  transform: rotate(15deg);
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  background: var(--cream);
+  padding: 24px 35px;
+  border: 3px solid var(--navy-dark);
+  outline: 2px solid var(--cream);
+  transform: rotate(-1deg);
+  box-shadow: 7px 8px 0 #101d31;
+}
+
+.hero-label {
+  font-family: "Special Elite", monospace;
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: var(--red);
+}
+
+#hero h1 {
+  font-family: "Permanent Marker", cursive;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.1;
+  margin: 10px 0;
+  color: var(--navy);
+  text-shadow: 2px 2px 0 #b5c1cc;
+}
+
+.hero-content p {
+  margin: 12px 0 0;
+  font-family: "Special Elite", monospace;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: .9rem;
+}
+
+.hero-star {
+  position: absolute;
+  color: var(--cream);
+  font-size: 44px;
+  animation: starFloat 4s ease-in-out infinite;
+}
+
+.star-one {
+  left: 5%;
+  top: 12%;
+}
+
+.star-two {
+  right: 6%;
+  bottom: 10%;
+  animation-delay: -2s;
+}
+
+.hero-note {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  color: var(--cream);
+  font-family: "Special Elite", monospace;
+  font-size: .8rem;
+  transform: rotate(-8deg);
+}
+
+/* NAVIGATION */
+
+#menu {
+  grid-column: 1 / -1;
+  background: var(--navy);
+  border: 3px solid var(--cream);
+  outline: 2px solid var(--navy-dark);
+  box-shadow: 5px 6px 0 #171c24;
+  padding: 12px;
+}
+
+#menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+#menu a {
+  display: block;
+  text-decoration: none;
+  color: var(--navy);
+  background: var(--cream);
+  border: 2px solid var(--navy-dark);
+  padding: 10px 18px;
+  font-weight: 800;
+  transition: .25s ease;
+  box-shadow: 3px 4px 0 #111c2a;
+}
+
+#menu li:first-child a {
+  color: white;
+  background: var(--red);
+}
+
+#menu a:hover {
+  color: white;
+  background: var(--red);
+  transform: translateY(-4px) rotate(-2deg);
+  box-shadow: 4px 7px 0 #111c2a;
+}
+
+/* CONTENT */
+
+#content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* NEWS CARDS */
+
+.berita {
+  position: relative;
+  padding: 30px;
+  overflow: hidden;
+  transform: rotate(-.35deg);
+  transition: transform .3s, box-shadow .3s;
+}
+
+.berita:nth-child(even) {
+  transform: rotate(.4deg);
+}
+
+.berita:hover {
+  transform: rotate(0deg) translateY(-5px);
+  box-shadow: 9px 12px 0 #172b4640;
+}
+
+.berita::after {
+  content: "✳";
+  position: absolute;
+  right: 18px;
+  top: 16px;
+  font-size: 43px;
+  line-height: 1;
+  color: var(--red);
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+.news-label {
+  display: inline-block;
+  padding: 4px 13px;
+  margin-bottom: 10px;
+  color: white;
+  background: var(--red);
+  border: 2px solid var(--navy-dark);
+  font-family: "Special Elite", monospace;
+  font-weight: bold;
+  transform: rotate(-4deg);
+}
+
+.judul {
+  font-family: "Permanent Marker", cursive;
+  color: var(--navy);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.3;
+  margin: 0 45px 14px 0;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--line);
+}
+
+.penulis,
+.tanggal {
+  font-size: .83rem;
+  font-weight: 700;
+  color: #4b4a46;
+}
+
+.penulis::before {
+  content: "✎ ";
+  color: var(--red);
+}
+
+.tanggal::before {
+  content: "▦ ";
+  color: var(--navy);
+}
+
+.cuplikan {
+  margin-top: 16px;
+  font-size: .92rem;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+  color: #42413d;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 17px;
+  padding: 7px 16px;
+  color: white;
+  background: var(--red);
+  border: 2px solid var(--red-dark);
+  text-decoration: none;
+  font-family: "Special Elite", monospace;
+  font-weight: bold;
+  box-shadow: 3px 4px 0 #c5b7a0;
+  transition: .25s;
+}
+
+.read-more:hover {
+  background: var(--navy);
+  border-color: var(--navy-dark);
+  transform: translate(2px, -2px);
+}
+
+/* SIDEBAR */
+
+#sidebar {
+  align-self: start;
+  padding: 24px;
+  position: sticky;
+  top: 20px;
+  transform: rotate(.5deg);
+}
+
+.sidebar-title {
+  margin: 0 0 22px;
+  padding: 12px 10px;
+  background: var(--navy);
+  color: var(--cream);
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.2rem;
+  text-align: center;
+  transform: rotate(-2deg);
+}
+
+#sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+#sidebar a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 800;
+  background: var(--cream);
+  border: 2px solid #c6b89f;
+  box-shadow: 3px 4px 0 #c7bba7;
+  transition: .25s;
+}
+
+#sidebar li:nth-child(even) a {
+  background: var(--navy);
+  color: var(--cream);
+  border-color: var(--navy-dark);
+}
+
+#sidebar li:nth-child(3) a {
+  background: var(--red);
+  color: white;
+  border-color: var(--red-dark);
+}
+
+#sidebar a::after {
+  content: "➜";
+  font-size: 1.1rem;
+}
+
+#sidebar a:hover {
+  transform: translateX(5px) rotate(-1deg);
+  box-shadow: 5px 6px 0 #b5a58d;
+}
+
+.sidebar-decoration {
+  margin-top: 28px;
+  padding: 20px 12px;
+  text-align: center;
+  border: 2px dashed var(--navy);
+  color: var(--navy);
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.3rem;
+  transform: rotate(-2deg);
+}
+
+.sidebar-decoration span {
+  display: block;
+  color: var(--red);
+  font-size: 2rem;
+}
+
+/* FOOTER */
+
+#footer {
+  grid-column: 1 / -1;
+  padding: 22px;
+  color: var(--cream);
+  background: var(--navy);
+  border: 3px solid var(--cream);
+  outline: 2px solid var(--navy-dark);
+  box-shadow: 5px 6px 0 #171c24;
+  text-align: center;
+  font-size: .85rem;
+  font-family: "Special Elite", monospace;
+}
+
+.footer-stars {
+  display: block;
+  color: #e5c9a0;
+  font-size: 1.3rem;
+  margin-bottom: 7px;
+}
+
+/* ANIMATION */
+
+@keyframes starFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-8px) rotate(12deg);
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 850px) {
+  #pembungkus {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  #hero,
+  #menu,
+  #content,
+  #sidebar,
+  #footer {
+    grid-column: 1 / -1;
+  }
+
+  #sidebar {
+    position: static;
+    transform: none;
+  }
+
+  #sidebar ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sidebar-decoration {
+    max-width: 350px;
+    margin: 25px auto 0;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 540px) {
+  #pembungkus {
+    width: 92%;
+    margin: 20px auto;
+    gap: 17px;
+  }
+
+  #hero {
+    min-height: 220px;
+    padding: 27px 17px;
+  }
+
+  .hero-content {
+    padding: 24px 16px;
+  }
+
+  #hero h1 {
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+  }
+
+  .hero-label {
+    font-size: .65rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-content p {
+    font-size: .7rem;
+  }
+
+  .hero-note {
+    font-size: .65rem;
+    left: 18px;
+    top: 10px;
+  }
+
+  .hero-star {
+    font-size: 30px;
+  }
+
+  #menu ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  #menu a {
+    padding: 10px 5px;
+    text-align: center;
+    font-size: .8rem;
+  }
+
+  .berita {
+    padding: 23px 20px;
+  }
+
+  .berita::after {
+    font-size: 30px;
+    right: 12px;
+    top: 13px;
+  }
+
+  .judul {
+    font-size: 1.55rem;
+    margin-right: 25px;
+  }
+
+  .meta {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .cuplikan {
+    font-size: .87rem;
+  }
+
+  #sidebar {
+    padding: 19px;
+  }
+
+  #sidebar ul {
+    grid-template-columns: 1fr;
+  }
+
+  #footer {
+    padding: 20px 12px;
+    font-size: .75rem;
+  }
+}
+
+/* REDUCE MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="pembungkus">
+
+  <!-- HEADER -->
+  <header id="hero">
+    <span class="hero-note">GOOD STORIES, BETTER DAYS</span>
+    <span class="hero-star star-one">✶</span>
+    <span class="hero-star star-two">✳</span>
+
+    <div class="hero-content">
+      <div class="hero-label">✦ THE LITTLE ARCHIVE ✦</div>
+      <h1>Selamat Datang</h1>
+      <p>DI WEBSITE ZHEVANYA GLADYS ALMALIKHA</p>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav id="menu">
+    <ul>
+      <li><a href="index.html">⌂ Beranda</a></li>
+      <li><a href="tentang-saya.html">Tentang Saya</a></li>
+      <li><a href="sekolahku.html">Sekolahku</a></li>
+      <li><a href="syair-lagu.html">♫ Syair Lagu</a></li>
+    </ul>
+  </nav>
+
+  <!-- NEWS CONTENT -->
+  <main id="content">
+
+    <!-- BERITA 1 -->
+    <article class="berita paper">
+      <span class="news-label">NEWS NO. 02</span>
+
+      <h2 class="judul">Judul Berita ke 2</h2>
+
+      <div class="meta">
+        <span class="penulis">
+          Oleh: Zhevanya Gladys Almalikha
+        </span>
+
+        <time class="tanggal" datetime="2026-10-20">
+          Selasa, 20 Oktober 2026
+        </time>
+      </div>
+
+      <div class="cuplikan">
+        Ini adalah cuplikan berita.
+
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        Maecenas porttitor congue massa. Fusce posuere, magna sed
+        pulvinar ultricies, purus lectus malesuada libero, sit amet
+        commodo magna eros quis urna. Nunc viverra imperdiet enim.
+        Fusce est. Vivamus a tellus. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada fames ac turpis
+        egestas. Proin pharetra nonummy pede. Mauris et orci.
+        Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.
+      </div>
+
+      <a class="read-more" href="berita-2.html">
+        Baca Selengkapnya →
+      </a>
+    </article>
+
+    <!-- BERITA 2 -->
+    <article class="berita paper">
+      <span class="news-label">NEWS NO. 01</span>
+
+      <h2 class="judul">Judul Berita ke 1</h2>
+
+      <div class="meta">
+        <span class="penulis">
+          Oleh: Zhevanya Gladys Almalikha
+        </span>
+
+        <time class="tanggal" datetime="2026-10-19">
+          Senin, 19 Oktober 2026
+        </time>
+      </div>
+
+      <div class="cuplikan">
+        Ini adalah cuplikan berita.
+
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        Maecenas porttitor congue massa. Fusce posuere, magna sed
+        pulvinar ultricies, purus lectus malesuada libero, sit amet
+        commodo magna eros quis urna. Nunc viverra imperdiet enim.
+        Fusce est. Vivamus a tellus. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada fames ac turpis
+        egestas. Proin pharetra nonummy pede. Mauris et orci.
+        Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.
+      </div>
+
+      <a class="read-more" href="berita-1.html">
+        Baca Selengkapnya →
+      </a>
+    </article>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="paper">
+    <h2 class="sidebar-title">TAUTAN PILIHAN</h2>
+
+    <ul>
+      <li>
+        <a href="https://www.wikipedia.org"
+           target="_blank" rel="noopener noreferrer">
+          Wikipedia
+        </a>
+      </li>
+
+      <li>
+        <a href="https://www.w3schools.com"
+           target="_blank" rel="noopener noreferrer">
+          W3Schools
+        </a>
+      </li>
+
+      <li>
+        <a href="https://www.mawan.id"
+           target="_blank" rel="noopener noreferrer">
+          Mawan's Blog
+        </a>
+      </li>
+
+      <li>
+        <a href="https://www.mimbarguru.com"
+           target="_blank" rel="noopener noreferrer">
+          MimbarGuru
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-decoration">
+      READ
+      <span>✶</span>
+      LEARN
+      <span>✦</span>
+      GROW
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <span class="footer-stars">✦ ───── ✶ ───── ✦</span>
+    &copy; 2026 Zhevanya Gladys Almalikha.
+    All rights reserved.
+    <span class="footer-stars">✦ ───── ✶ ───── ✦</span>
+  </footer>
+
+</div>
+</body>
+</html>
