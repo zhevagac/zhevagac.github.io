@@ -71,14 +71,14 @@ body {
 
 #hero {
   grid-column: 1 / -1;
-  min-height: 285px;
+  min-height: 310px;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 40px 24px;
+  padding: 55px 24px;
   background: var(--navy);
   border: 3px solid var(--cream);
   outline: 3px solid var(--navy-dark);
@@ -98,7 +98,7 @@ body {
   content: "✦";
   position: absolute;
   right: 7%;
-  top: 4%;
+  top: 12%;
   color: var(--cream);
   font-size: 100px;
   opacity: .22;
@@ -132,7 +132,6 @@ body {
   line-height: 1.1;
   margin: 10px 0;
   color: var(--navy);
-  text-shadow: 2px 2px 0 #b5c1cc;
 }
 
 .hero-content p {
@@ -143,32 +142,57 @@ body {
   font-size: .9rem;
 }
 
+/* HEADER NOTES */
+
+.hero-note {
+  position: absolute;
+  top: 22px;
+  left: 28px;
+  max-width: 190px;
+  color: var(--cream);
+  font-family: "Special Elite", monospace;
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transform: rotate(-8deg);
+  z-index: 2;
+}
+
+.hero-quote {
+  position: absolute;
+  right: 27px;
+  bottom: 22px;
+  max-width: 260px;
+  padding: 8px 12px;
+  color: var(--cream);
+  font-family: "Special Elite", monospace;
+  font-size: .9rem;
+  text-align: right;
+  line-height: 1.5;
+  background: var(--red);
+  border: 2px solid var(--cream);
+  box-shadow: 3px 4px 0 var(--navy-dark);
+  transform: rotate(-3deg);
+  z-index: 2;
+}
+
 .hero-star {
   position: absolute;
   color: var(--cream);
   font-size: 44px;
   animation: starFloat 4s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .star-one {
   left: 5%;
-  top: 12%;
+  top: 38%;
 }
 
 .star-two {
-  right: 6%;
-  bottom: 10%;
+  right: 7%;
+  top: 36%;
   animation-delay: -2s;
-}
-
-.hero-note {
-  position: absolute;
-  top: 20px;
-  left: 25px;
-  color: var(--cream);
-  font-family: "Special Elite", monospace;
-  font-size: .8rem;
-  transform: rotate(-8deg);
 }
 
 /* NAVIGATION */
@@ -288,7 +312,7 @@ body {
 .tanggal {
   font-size: .83rem;
   font-weight: 700;
-  color: #4b4a46;
+  color: #353535;
 }
 
 .penulis::before {
@@ -303,10 +327,12 @@ body {
 
 .cuplikan {
   margin-top: 16px;
+  font-family: "DM Sans", sans-serif;
   font-size: .92rem;
-  line-height: 1.85;
+  font-weight: 500;
+  line-height: 1.8;
   overflow-wrap: anywhere;
-  color: #42413d;
+  color: #302f2b;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
@@ -428,6 +454,10 @@ body {
   border: 3px solid var(--cream);
   outline: 2px solid var(--navy-dark);
   box-shadow: 5px 6px 0 #171c24;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-size: .85rem;
   font-family: "Special Elite", monospace;
@@ -476,11 +506,6 @@ body {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .sidebar-decoration {
-    max-width: 350px;
-    margin: 25px auto 0;
-  }
 }
 
 /* MOBILE */
@@ -493,16 +518,17 @@ body {
   }
 
   #hero {
-    min-height: 220px;
-    padding: 27px 17px;
+    min-height: 310px;
+    padding: 65px 14px;
   }
 
   .hero-content {
-    padding: 24px 16px;
+    padding: 23px 12px;
+    max-width: 100%;
   }
 
   #hero h1 {
-    font-size: clamp(2.2rem, 11vw, 3.4rem);
+    font-size: clamp(2rem, 10vw, 3.1rem);
   }
 
   .hero-label {
@@ -511,17 +537,37 @@ body {
   }
 
   .hero-content p {
-    font-size: .7rem;
+    font-size: .65rem;
+    overflow-wrap: anywhere;
   }
 
   .hero-note {
+    left: 15px;
+    top: 12px;
     font-size: .65rem;
-    left: 18px;
-    top: 10px;
+    max-width: 140px;
+  }
+
+  .hero-quote {
+    right: 15px;
+    bottom: 12px;
+    max-width: 190px;
+    padding: 5px 8px;
+    font-size: .68rem;
   }
 
   .hero-star {
     font-size: 30px;
+  }
+
+  .star-one {
+    left: 6%;
+    top: 36%;
+  }
+
+  .star-two {
+    right: 7%;
+    top: 35%;
   }
 
   #menu ul {
@@ -556,6 +602,11 @@ body {
     gap: 3px;
   }
 
+  .penulis,
+  .tanggal {
+    font-size: .78rem;
+  }
+
   .cuplikan {
     font-size: .87rem;
   }
@@ -574,7 +625,12 @@ body {
   }
 }
 
-/* REDUCE MOTION */
+/* ACCESSIBILITY */
+
+a:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 4px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -595,6 +651,11 @@ body {
   <!-- HEADER -->
   <header id="hero">
     <span class="hero-note">GOOD STORIES, BETTER DAYS</span>
+
+    <span class="hero-quote">
+      "Every page holds a new story."
+    </span>
+
     <span class="hero-star star-one">✶</span>
     <span class="hero-star star-two">✳</span>
 
@@ -615,10 +676,9 @@ body {
     </ul>
   </nav>
 
-  <!-- NEWS CONTENT -->
+  <!-- NEWS -->
   <main id="content">
 
-    <!-- BERITA 1 -->
     <article class="berita paper">
       <span class="news-label">NEWS NO. 02</span>
 
@@ -652,7 +712,6 @@ body {
       </a>
     </article>
 
-    <!-- BERITA 2 -->
     <article class="berita paper">
       <span class="news-label">NEWS NO. 01</span>
 
@@ -734,11 +793,16 @@ body {
   <!-- FOOTER -->
   <footer id="footer">
     <span class="footer-stars">✦ ───── ✶ ───── ✦</span>
-    &copy; 2026 Zhevanya Gladys Almalikha.
-    All rights reserved.
+
+    <div>
+      &copy; 2026 Zhevanya Gladys Almalikha.
+      All rights reserved.
+    </div>
+
     <span class="footer-stars">✦ ───── ✶ ───── ✦</span>
   </footer>
 
 </div>
 </body>
 </html>
+
